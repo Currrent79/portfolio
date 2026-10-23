@@ -1,36 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #0d1117;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-        h1 {
-            font-size: 5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What Love Has Taught Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Caveat:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3b2412;--gold:#d9ad4f;--bw:min(92vw,440px);--bh:min(78vh,660px);--grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .2 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+@supports(height:1dvh){:root{--bh:min(78dvh,660px)}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Cormorant Garamond',serif;color:var(--ink);background:#1a0f08}
+#room{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:64px;overflow:hidden;
+background:radial-gradient(ellipse 60% 50% at 50% 38%,rgba(255,190,90,.4),transparent 70%),repeating-linear-gradient(92deg,transparent 0 38px,rgba(0,0,0,.22) 38px 40px),linear-gradient(#4a2c16,#271509)}
+#room::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65));pointer-events:none}
+.rs{position:absolute;bottom:-60px;width:130px;opacity:.5;pointer-events:none}.rs.l{left:2vw;transform:rotate(-28deg)}.rs.r{right:2vw;transform:rotate(24deg)}
+#book{position:relative;width:var(--bw);height:var(--bh);perspective:2000px;z-index:2;transition:transform 1.6s ease;animation:rise 1.8s ease backwards;
+box-shadow:1px 1px 0 #d9c79a,2px 2px 0 #bba777,3px 3px 0 #e4d4a8,4px 4px 0 #b39e6c,0 22px 46px rgba(0,0,0,.6)}
+#book.small{transform:translateY(-27vh) scale(.42)}
+@keyframes rise{from{opacity:0;transform:translateY(40px) rotateX(10deg) scale(.96)}}
+.pg{position:absolute;inset:0;transform-origin:left center;transition:transform 1.3s cubic-bezier(.45,.05,.25,1),box-shadow 1.3s;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+border-radius:2px 8px 8px 2px;background:var(--grain),radial-gradient(ellipse at 30% 20%,#f6e7b4,#ecd68f 70%,#dcc17a);overflow-x:hidden;overflow-y:auto;
+padding:9% 9% 8% 12%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pg::before{content:"";position:absolute;inset:0 auto 0 0;width:8%;background:linear-gradient(90deg,rgba(80,45,10,.35),transparent);pointer-events:none}
+.pg.flip{transform:rotateY(-178deg);box-shadow:-30px 0 60px rgba(0,0,0,.5);pointer-events:none}
+.ch{font-style:italic;font-size:1.1rem;opacity:.8}
+.num{font-family:'Pinyon Script',cursive;font-size:3.4rem;color:#a4731f;line-height:1.1}
+h2{font-weight:600;font-size:1.75rem;margin:.15em 0 .5em;line-height:1.15}
+.inkwrap{position:relative;margin:auto 0;padding:0 2%}
+.ink{font-family:Caveat,cursive;font-size:clamp(1.45rem,5.6vw,1.8rem);line-height:1.35;font-weight:500}
+.ink.sm{font-size:clamp(1.3rem,5vw,1.55rem)}
+.w{opacity:0;filter:blur(2px);transition:opacity .5s var(--d),filter .5s var(--d)}
+.cur .w{opacity:1;filter:none}.all .w{transition-delay:0s!important}
+.late{opacity:0;transition:opacity 1.6s var(--l,4s)}.cur .late{opacity:1}.all .late{transition-delay:0s}
+.pen{position:absolute;right:-8px;bottom:-34px;width:44px;opacity:0;transition:opacity .6s;animation:wr 1.4s ease-in-out infinite;pointer-events:none}
+.cur:not(.done) .pen{opacity:1}@keyframes wr{50%{transform:translate(-6px,3px) rotate(-4deg)}}
+.rv{position:absolute;top:10px;right:12px;z-index:5;background:rgba(255,248,220,.5);border:1px solid rgba(90,55,20,.4);border-radius:20px;padding:5px 13px;font:italic 1rem 'Cormorant Garamond',serif;color:var(--ink);cursor:pointer}
+.done .rv{display:none}
+.sfc{position:absolute;width:62px;right:10px;bottom:-24px;opacity:.85;pointer-events:none;transform:rotate(-8deg)}
+.sig{font-family:'Pinyon Script',cursive;font-size:2.3rem;color:#5a3416;margin:10px 0 4px;line-height:1.2}
+.frame{padding:10px;background:linear-gradient(135deg,#8b6a2a,#f0d487 45%,#7d5c1f);box-shadow:0 8px 22px rgba(60,30,5,.5);width:90%;margin:auto 0 0}
+.mat{background:#f3e6c4;padding:8px}.mat img{display:block;width:100%;height:auto;max-height:50vh;max-height:50dvh;object-fit:contain;margin:auto}
+.ph{display:block;width:50%;margin:10px auto;opacity:.45}
+.cap{font:500 1.7rem Caveat,cursive;margin:16px 0 auto}
+.gl{background:var(--grain),radial-gradient(circle at 50% 45%,#fbe9ae,#ecd68f 55%,#dcc17a)}
+.pr{opacity:.45;filter:sepia(.6)}.pr.a{top:8px;left:12px;right:auto;bottom:auto;width:48px;transform:rotate(30deg)}.pr.b{bottom:-16px;right:12px;width:58px;transform:rotate(-20deg)}
+.vil{padding:0}.scene{position:absolute;inset:0;width:100%;height:100%}
+.scene use{transform-box:fill-box;transform-origin:50% 100%;animation:sw 4s ease-in-out infinite alternate}
+.pg:not(.cur) .scene use{animation-play-state:paused}@keyframes sw{from{transform:rotate(-1.8deg)}to{transform:rotate(1.8deg)}}
+.card{position:absolute;left:4%;right:4%;bottom:12px;max-height:54%;overflow:auto;padding:14px 16px;border-radius:6px;background:var(--grain),rgba(246,231,184,.93);box-shadow:0 6px 18px rgba(50,20,0,.4)}
+.thx{font:600 1.5rem Caveat,cursive;margin-top:8px}
+.hd{font-family:'Pinyon Script',cursive;font-weight:400;font-size:2.4rem;color:#8a5a14;margin:0 0 8px}
+.coll{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 6px;width:100%;margin:4px 0 12px;align-items:center}
+.pol{width:31%;background:#fffaf0;padding:5px 5px 20px;box-shadow:0 4px 10px rgba(50,25,5,.4);opacity:0;transform:translateY(16px) rotate(var(--r));transition:opacity .9s var(--d),transform .9s var(--d)}
+.cur .pol{opacity:1;transform:rotate(var(--r))}.pol img{display:block;width:100%;height:auto}.pol .ph{width:70%;min-height:60px}
+.msg{font:500 clamp(1.2rem,4.4vw,1.35rem)/1.3 Caveat,cursive}
+.cv{background:var(--grain),linear-gradient(135deg,#2e4d38,#18301f 60%,#102317);color:#ecd18a;justify-content:center}
+.cv::before{inset:12px;width:auto;background:none;border:1px solid var(--gold);box-shadow:inset 0 0 0 4px #1d3827,inset 0 0 0 5px rgba(217,173,79,.6)}
+.cv::after{content:"";position:absolute;left:0;top:0;bottom:0;width:7%;background:linear-gradient(90deg,#08150d,rgba(255,255,255,.09) 45%,#08150d);pointer-events:none}
+.cv .frame{width:58%;margin:0 auto 10px}.cv .mat{background:#1d3827;padding:5px}.cv .mat img{max-height:26vh;max-height:26dvh}
+.cv h1{font:400 2.5rem/1.05 'Pinyon Script',cursive;background:linear-gradient(#fbe9ae,#c8962e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 2px #000a);padding:4px 6px}
+.sub{font-style:italic;font-size:1.2rem;margin:4px 0}.tag{font-size:.98rem;opacity:.85;margin:0 6% 12px}.ins{font-size:.82rem;font-style:italic;opacity:.7;margin-top:12px}
+.btn,#nav button{font:600 1.1rem 'Cormorant Garamond',serif;min-height:46px;padding:0 16px;border-radius:26px;cursor:pointer;line-height:1.1}
+.btn{color:#2a1a08;background:linear-gradient(#f3d98c,#c99a38);border:1px solid #f7e4a6}
+#nav{position:fixed;bottom:max(10px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:var(--bw);display:flex;gap:8px;align-items:center;justify-content:space-between;z-index:5;transition:opacity .8s}
+#nav.hide{opacity:0;pointer-events:none}#nav::before{content:"";position:absolute;left:0;right:0;top:-8px;height:3px;background:rgba(255,255,255,.15)}
+#nav button{color:var(--ink);background:linear-gradient(#f6e7b4,#e0c57c);border:1px solid #a4731f;flex:1}#nav #nx{flex:1.3}
+#nav button:disabled{opacity:.4}#cnt{color:#e8cc86;font-size:1rem;min-width:44px;text-align:center}
+#bar{position:absolute;left:0;top:-8px;height:3px;background:var(--gold);transition:width .6s}
+button:focus-visible{outline:3px solid #fff3b0;outline-offset:2px}
+.glow{position:absolute;top:2%;bottom:2%;right:-2px;width:18%;opacity:0;transition:opacity 3s;background:linear-gradient(90deg,transparent,rgba(255,214,110,.95));filter:blur(6px);z-index:50;pointer-events:none}
+.glow.on{opacity:1}.pg.ajar{transform:rotateY(-26deg)}
+#end{position:fixed;left:50%;transform:translateX(-50%);top:44vh;bottom:10px;width:min(92vw,560px);overflow:auto;text-align:center;color:#f0d78f;z-index:3;display:none;padding:4px 6px}
+#end.on{display:block}
+#end h2{font:400 2.1rem/1.15 'Pinyon Script',cursive;text-shadow:0 0 18px rgba(255,200,90,.6);margin-bottom:10px}
+#end p{font:500 clamp(1.2rem,4.4vw,1.4rem)/1.35 Caveat,cursive;margin-bottom:10px}
+.fi{opacity:0;transform:translateY(8px);transition:opacity 2s var(--t),transform 2s var(--t)}#end.show .fi{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.w{transition-delay:0s!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="sf" viewBox="-52 -52 104 190"></symbol></svg>
+<div id="room"><div id="book"></div></div>
+<div id="end"><h2 class="fi" style="--t:0s">Chapter One: The End of an Old Beginning.</h2>
+<p class="fi" style="--t:2.6s">This chapter holds the mistakes I made, the lessons I learned, and the version of myself I’m slowly leaving behind.</p>
+<p class="fi" style="--t:5.2s">But the book remains open, because a heart that learns can always grow, and a person who truly reflects can always become better.</p>
+<p class="fi" style="--t:7.8s">One chapter ends, but the journey of becoming a better me continues.</p></div>
+<div id="nav" class="hide"><button id="pv">← Previous Page</button><span id="cnt"></span><button id="nx">Turn the Page →</button><i id="bar"></i></div>
+<script>
+function ph(e){e.outerHTML=sv('ph')}
+const $=s=>document.querySelector(s),sv=c=>`<svg class="${c}" viewBox="-52 -52 104 190"><use href="#sf"/></svg>`,sfc=sv('sfc');
+let p='';for(let k=0;k<16;k++)p+=`<ellipse cy="-31" rx="8" ry="21" fill="#d49412" transform="rotate(${k*22.5})"/>`;
+for(let k=0;k<16;k++)p+=`<ellipse cy="-28" rx="7" ry="18" fill="#f4bd2c" transform="rotate(${k*22.5+11})"/>`;
+$('#sf').innerHTML=`<rect x="-3" y="12" width="6" height="140" fill="#4f6b22"/><ellipse cx="17" cy="95" rx="17" ry="7" fill="#5f8a2b" transform="rotate(-28 17 95)"/><ellipse cx="-17" cy="120" rx="17" ry="7" fill="#5f8a2b" transform="rotate(28 -17 120)"/>`+p+`<circle r="17" fill="#4a2a12"/><circle r="11" fill="#6b3e17"/>`;
+$('#room').insertAdjacentHTML('beforeend',sv('rs l')+sv('rs r'));
 
-    <h1>Coming Soon</h1>
+const U=['First','Second','Third','Fourth','Fifth','Sixth','Seventh'],R=['I','II','III','IV','V','VI','VII'];
+const L=[['Overthinking','Overthinking can ruin beautiful things between us.'],
+['Giving You Space','You have your own life and situations. I need to understand that and give you space.'],
+['Respecting Your Privacy','You don’t have to share everything with me. I need to respect your privacy.'],
+['No Controlling','I should never try to control you or your choices.'],
+['Trust and Freedom','I should trust you, give you freedom, understand you, and support you without making you feel pressured.'],
+['Love Should Feel Safe','Love should feel like a safe place, not a burden. You should feel comfortable with me, never pressured to share or do anything you don’t want. My role is to make you feel safe, understood, and free.'],
+['My Behaviour and Messages','Most importantly, my messages should make you feel happy, not irritated or pressured. I need to respect your space, understand when you’re stressed, and never let my behaviour become another burden for you.']];
+const pen=`<svg class="pen" viewBox="0 0 60 60"><path d="M52 4l6 6-34 34-10 4 4-10z" fill="#2b1a0e"/><path d="M52 4l6 6-4 4-6-6zM14 48l4-10 6 6z" fill="#c9a24a"/></svg>`;
+const img=(n,a)=>`<img src="${n}" alt="${a}" onerror="ph(this)">`;
 
-</body>
-</html>
+let fl='';for(let y=352,r=0;y<800;r++){const s=10+(y-352)*.11,st=s*1.5;
+for(let x=-s+(r%2)*st/2;x<400;x+=st){const j=Math.sin(x*12.9+y*7.7)*43758.5,q=j-Math.floor(j),cx=x+s/2;
+if(Math.abs(cx-(200-(y-348)*.03))<4+(y-348)*.17+s*.2)continue;
+fl+=`<use href="#sf" x="${(x+q*s*.3).toFixed(1)}" y="${(y+q*6).toFixed(1)}" width="${s.toFixed(1)}" height="${(s*1.83).toFixed(1)}" style="animation-delay:-${(q*4).toFixed(1)}s"/>`}
+y+=s*.9}
+const scene=`<svg class="scene" viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8875a"/><stop offset=".5" stop-color="#f7b865"/><stop offset="1" stop-color="#fbe3a0"/></linearGradient><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e8a30"/><stop offset="1" stop-color="#586a20"/></linearGradient></defs><g transform="translate(0 -98)"><rect y="-100" width="400" height="440" fill="url(#sk)"/><circle cx="290" cy="250" r="70" fill="#fff0b8" opacity=".45"/><circle cx="290" cy="250" r="32" fill="#fff6d2"/><ellipse cx="90" cy="190" rx="50" ry="9" fill="#fff0cf" opacity=".5"/><ellipse cx="130" cy="202" rx="34" ry="7" fill="#fff0cf" opacity=".4"/><path d="M0 320Q100 262 200 300T400 280V380H0Z" fill="#b9785a"/><path d="M0 342Q120 296 240 334T400 322V390H0Z" fill="#8f7c3c"/><rect y="336" width="400" height="470" fill="url(#gr)"/><path d="M195 348L205 348Q215 520 252 800L120 800Q190 520 195 348Z" fill="#d9a45f"/><rect x="160" y="312" width="80" height="38" fill="#f0dcb0"/><path d="M150 316L200 278L250 316Z" fill="#9a3f2c"/><rect x="222" y="286" width="10" height="20" fill="#7a3524"/><rect x="190" y="326" width="16" height="24" fill="#6b3b1e"/><rect x="168" y="324" width="14" height="12" fill="#ffd45a"/><rect x="218" y="324" width="14" height="12" fill="#ffd45a"/><rect x="156" y="348" width="88" height="5" fill="#a8895a"/>${fl}</g></svg>`;
+
+const cover=`<section class="pg cv"><div class="frame"><div class="mat">${img('1s.png','Cover photograph')}</div></div><h1>What Love Has Taught Me</h1><p class="sub">Seven lessons, written from the heart.</p><p class="tag">Some lessons are understood only when we look back at ourselves.</p><button class="btn" id="open">Open the Book</button><p class="ins">Written with love, honesty, and a wish to become better.</p></section>`;
+const lessons=L.map(([t,x],k)=>`<section class="pg"><div class="ch">The ${U[k]} Lesson</div><div class="num">${R[k]}</div><h2>${t}</h2><div class="inkwrap"><p class="ink">${x}</p>${pen}</div>${sfc}</section>`).join('');
+const refl=`<section class="pg"><div class="ch">A reflection</div><h2 style="margin-top:14px">The Person I Am Working to Become</h2><div class="inkwrap"><p class="ink sm">When I look back at my past behaviour, I understand why it hurt you. I cannot change what happened, but I can take responsibility for my actions and work on myself every day. I want my growth to be visible through my behaviour, not just my words.</p></div><div class="sig late" style="--l:9s">Saugat</div>${sfc}</section>`;
+const us=`<section class="pg gl"><div class="frame">${'<div class="mat">'+img('2s.png','Us together')+'</div>'}</div><p class="cap">A memory I will always hold close.</p>${sv('sfc pr a')}${sv('sfc pr b')}</section>`;
+const vil=`<section class="pg vil">${scene}<div class="card"><p class="ink sm">I’m truly sorry for the ways I hurt you. I cannot undo the past, but I can learn from it. I never want my behaviour to make someone I care about feel pressured or uncomfortable again. I will keep working on myself and let my actions show the change.</p><p class="thx late" style="--l:9s">Thank you for being a meaningful part of my life.</p></div></section>`;
+const rot=[-4,3,-2,4,-3];
+const fin=`<section class="pg"><h2 class="hd">For My Little Sunflower</h2><div class="coll">${[4,5,6,7,8].map((n,k)=>`<div class="pol" style="--r:${rot[k]}deg;--d:${(1.1+k*.25).toFixed(2)}s">${img(n+'s.png','Photograph '+(k+1))}</div>`).join('')}</div><p class="msg">I’ve learned some important lessons from everything that happened, and I understand what I need to change within myself. I never want to repeat those mistakes again. I’m truly sorry for everything, and I’ll carry these lessons with me for the rest of my life.</p><div class="sig late" style="--l:3s">With sincerity,<br>Saugat ♡</div>${sfc}</section>`;
+
+const book=$('#book');book.innerHTML=cover+lessons+refl+us+vil+fin+'<div class="glow" id="glow"></div>';
+const pages=[...book.querySelectorAll('.pg')],N=pages.length,nav=$('#nav'),nx=$('#nx');
+pages.forEach((pg,k)=>{pg.style.zIndex=N-k;const t=pg.querySelector('.ink');if(!t)return;
+const w=t.textContent.trim().split(/\s+/);t.innerHTML=w.map((s,k)=>`<span class="w" style="--d:${(k*.13+1.1).toFixed(2)}s">${s}</span>`).join(' ');
+pg.dataset.ms=w.length*130+2300;const b=document.createElement('button');b.className='rv';b.textContent='Reveal all';b.onclick=()=>pg.classList.add('all','done');pg.appendChild(b)});
+
+let i=0,busy=false,tm;
+function go(n){if(busy||n<0||n>N-1)return;busy=true;setTimeout(()=>busy=false,950);i=n;
+pages.forEach((pg,k)=>{pg.classList.toggle('flip',k<i);pg.classList.toggle('cur',k===i)});
+const pg=pages[i];clearTimeout(tm);if(pg.dataset.ms&&!pg.classList.contains('done'))tm=setTimeout(()=>pg.classList.add('done'),+pg.dataset.ms);
+nav.classList.toggle('hide',i===0);$('#cnt').textContent=i+' / '+(N-1);$('#bar').style.width=(i/(N-1)*100)+'%';
+nx.textContent=i===N-1?'Close the Book':i===N-2?'Turn the Final Page →':'Turn the Page →'}
+const next=()=>i===N-1?close():go(i+1),prev=()=>go(i-1);
+function close(){if(busy)return;busy=true;nav.classList.add('hide');const c=pages[0];c.style.zIndex=100;c.classList.remove('flip');
+setTimeout(()=>book.classList.add('small'),1500);
+setTimeout(()=>{$('#end').classList.add('on');requestAnimationFrame(()=>requestAnimationFrame(()=>$('#end').classList.add('show')))},3000);
+setTimeout(()=>{c.classList.add('ajar');$('#glow').classList.add('on')},14500)}
+$('#open').onclick=next;nx.onclick=next;$('#pv').onclick=prev;
+book.addEventListener('click',e=>{if(i===0||e.target.closest('button'))return;const r=book.getBoundingClientRect(),x=(e.clientX-r.left)/r.width;if(x>.88)next();else if(x<.08)prev()});
+let sx,sy;book.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+book.addEventListener('touchend',e=>{if(i===0)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)dx<0?next():prev()},{passive:true});
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&i>0)next();if(e.key==='ArrowLeft')prev()});
+pages[0].classList.add('cur');
+</script></body></html>
